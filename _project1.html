@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="ide">
+  <head>
+  <title>Earth Engine Code Editor</title>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons+Round">
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="stylesheet" href="https://www.gstatic.com/external_hosted/material_design_lite/mdl_css-blue-indigo-bundle.css">
+<script defer nonce="+bMjY7c5meKwOsboSKRATx2/uXpmLy" src="https://www.gstatic.com/external_hosted/material_design_lite/mdl_all_js_compiled.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async nonce="+bMjY7c5meKwOsboSKRATx2/uXpmLy" src="https://www.googletagmanager.com/gtag/js?id=G-3N9E042GJH"></script>
+  <script nonce="+bMjY7c5meKwOsboSKRATx2/uXpmLy"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIdO53SBE0yrw3mmxBnfF3HeIIj316gA0&region=&language=&v=quarterly&libraries=drawing,places">
+  </script>
+  <script nonce="+bMjY7c5meKwOsboSKRATx2/uXpmLy" src="/javascript/fuzzy.js"></script>
+  <!-- Automatically load polyfills for Web Component APIs if needed. -->
+  <script nonce="+bMjY7c5meKwOsboSKRATx2/uXpmLy" src="/javascript/polyfills/webcomponentsjs/webcomponents-loader.js"></script>
+  <script nonce="+bMjY7c5meKwOsboSKRATx2/uXpmLy" src="/javascript/polyfills/web-animations-next-lite.min.js"></script>
+  <script nonce="+bMjY7c5meKwOsboSKRATx2/uXpmLy">
+      window._ee_flag_initialData = {"acceptedRepoName": "", "allowLegacyAssetHomeFolder": true, "analyticsId": "G-3N9E042GJH", "appEngineVersionId": "323906254b", "appsDomain": "earthengine.app", "assetId": "", "authClientId": "174092772876-102p5aff6h4dbm6o6aa024ouan0jr48d.apps.googleusercontent.com", "authScopes": ["openid", "email", "https://www.googleapis.com/auth/earthengine", "https://www.googleapis.com/auth/devstorage.full_control", "https://www.googleapis.com/auth/cloud-platform", "https://www.googleapis.com/auth/drive"], "authToken": "ya29.a0AfB_byCAMagASHnbfJgQHhcj7VDUixd_zuv234f4mfUt3QF0hpUc1Jy6t5XLEXU7OLsOd_GKT3CDng5qZ6ERAicVckIwzHSaHp6Gz6ItNSESunKZEbsORGEpiHhXXJacS1z-ro5lcRubut1ZvU-TxYEElnWKE9AFS0RJcleHhUsaCgYKAVQSARESFQHGX2Mi9fqI2FX-pOZlI6YsOiuRhA0178", "authTokenExpiresInMs": 3598061, "blocked": false, "email": "mochibe04@gmail.com", "hideCode": 0, "isGoogler": false, "jsSourceType": "compiled", "mapsApiKey": "AIzaSyCIdO53SBE0yrw3mmxBnfF3HeIIj316gA0", "mapsVersion": "quarterly", "mapLanguage": "", "mapRegion": "", "placeSearchFilter": "(regions)", "preferences": {"SHARED_REPOS_WHITELISTED": {}, "UI_TOP_PANEL_HEIGHT": 0.39552488627378496, "UI_LEFT_PANEL_WIDTH": 0.25, "UI_RIGHT_PANEL_WIDTH": 0.25, "APP_PROJECT": "ee-jethasri", "USER_ASSETS_PROJECTS": ["ee-jethasri"], "VIEWED_TOURS": {"root": 1, "UserInterface.leftPanel": 1, "editor.Panel": 1, "UserInterface.rightPanel": 1, "knobs.KnobsRoot": 1, "SearchBox": 1, "CloudProject": 1}, "FAST_REPO_LISTS": [{"access": "owner", "name": "users/jethasri/waterqualityprediction"}], "TREE_FOLDER_EXPANDED\nassets:users/jethasri:users/jethasri": true, "TREE_FOLDER_EXPANDED\nrepo:users/jethasri/waterqualityprediction:": true, "TREE_FOLDER_EXPANDED\nassets:projects/ee-jethasri/assets:projects/ee-jethasri/assets": true}, "prodAppHost": "code.earthengine.google.com", "prodAppUrl": "https://code.earthengine.google.com", "prodRealm": "https://earthengine.googleapis.com", "project": "ee-jethasri", "projectRegistered": true, "projectError": 0, "runOnLoad": true, "restricted": false, "scriptPath": "", "scriptId": null, "stagingRealms": null, "trustedTester": false, "xsrfToken": "D9Wp9mvVZVyvToYhmeXU8qVTxzLjO_OAEoyUN8XQntw6MTcwODM1MTIzMTkzNzExMw", "xsrfTokenExpiresInMs": 86400000.0, "summitPreview": false, "exportVideoMapPreview": false};
+  </script>
+  
+    <script nonce="+bMjY7c5meKwOsboSKRATx2/uXpmLy">
+      
+      window.CLOSURE_NO_DEPS = true;
+    </script>
+    
+      <script nonce="+bMjY7c5meKwOsboSKRATx2/uXpmLy" src="/javascript/playground.js"></script>
+    
+    <link rel="stylesheet" href="/css/playground.css">
+  
+  </head>
+  <body>
+    <div id="head">
+  <div id="logo">
+    <img src="/images/GoogleEarthEngine_v1.png" alt="Google Earth Engine" />
+  </div>
+  <div id="search-container"></div>
+  
+</div>
+    <ee-app-context>
+      <div id="main" class="main"></div>
+    </ee-app-context>
+    <script nonce="+bMjY7c5meKwOsboSKRATx2/uXpmLy">
+      playground.App.boot();
+    </script>
+  </body>
+</html>
