@@ -1,0 +1,85 @@
+/**** Start of imports. If edited, may not auto-convert in the playground. ****/
+var imageVisParam = {"opacity":1,"bands":["B4","B3","B2"],"min":1374.08,"max":1953.92,"gamma":1};
+/***** End of imports. If edited, may not auto-convert in the playground. *****/
+/**** Start of imports. If edited, may not auto-convert in the playground. ****/
+var table = ee.FeatureCollection("projects/ee-jethasri/assets/Water_Quality");
+/***** End of imports. If edited, may not auto-convert in the playground. *****/
+
+Map.addLayer(table)
+Map.centerObject(table,13)
+
+var img = ee.ImageCollection("COPERNICUS/S2_SR")
+                  .filterBounds(table)
+                  .filterDate('1970-01-01','2023-12-31')
+                  .sort('CLOUDY_PIXEL_PERCENTAGE', true)
+                  .first()
+                  .clip(table)
+                  
+                  
+Map.addLayer(img, imageVisParam,'true color')
+
+
+var ndwi_f = function (img) {
+  var ndwi = img.normalizedDifference(['B3','B8']).rename('NDWI')
+  
+  return img.addBands(ndwi)
+  .updateMask(ndwi.gt(-1))}
+  
+  
+var img_water = ndwi_f(img)
+
+Map.addLayer(img_water.select('NDWI'), {palette:['blue']},'img_water')
+
+var ndci_f = function(img){
+  var ndci = img.normalizedDifference(['B5','B4']).rename('NDCI')
+  return img.addBands(ndci)
+}
+
+var ndci_img = ndci_f(img_water)
+
+var viz =  {min:0.1, max:0.4, palette:['cyan','orange','red']}
+Map.addLayer(ndci_img.select('NDCI'), viz ,'NDCI')
+
+
+var legend = ui.Panel({
+  style: {
+    position: 'bottom-left',
+    padding: '8px 15px'
+  }
+});
+ 
+// Create legend title
+var legendTitle = ui.Label({
+  value: 'My Legend',
+  style: {
+    fontWeight: 'bold',
+    fontSize: '18px',
+    margin: '0 0 4px 0',
+    padding: '0'
+    }
+});
+ 
+legend.add(legendTitle);
+var makeRow = function(color, name) {
+      var colorBox = ui.Label({
+        style: {
+          backgroundColor: '#' + color,
+          padding: '8px',
+          margin: '0 0 4px 0'
+        }
+      });
+      var description = ui.Label({
+        value: name,
+        style: {margin: '0 0 4px 6px'}
+      });
+      return ui.Panel({
+        widgets: [colorBox, description],
+        layout: ui.Panel.Layout.Flow('horizontal')
+      });
+};
+var palette =['FF0000', 'FFA500', '00FFFF'];
+var names = ['Polluted','Neutral','Normal'];
+for (var i = 0; i < 3; i++) {
+  legend.add(makeRow(palette[i], names[i]));
+  }  
+Map.add(legend);
